@@ -75,6 +75,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     </tool>
   </lib>
   <lib desc="file#logisim_ALU.circ" name="7"/>
+  <lib desc="file#logisim_registerfile.circ" name="8"/>
+  <lib desc="file#logisim_PC.circ" name="9"/>
   <main name="main"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
