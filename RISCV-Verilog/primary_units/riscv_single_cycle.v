@@ -105,11 +105,12 @@ module riscv_single_cycle #(
         .alu_ctrl(alu_ctrl)
     );
 
-    alu alu_unit (
-        .a(alu_a),
-        .b(alu_b),
-        .alu_ctrl(alu_ctrl),
-        .result(alu_result)
+alu alu_unit (
+        .A(alu_a),
+        .B(alu_b),
+        .ALUControl(alu_ctrl),
+        .Result(alu_result),
+        .Zero()
     );
 
     data_mem #(

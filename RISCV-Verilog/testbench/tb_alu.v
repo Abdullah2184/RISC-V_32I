@@ -3,8 +3,15 @@ module tb_alu;
     reg [31:0] a, b;
     reg [3:0] alu_ctrl; // ALUSel per Table 3.8
     wire [31:0] result;
+    wire zero;
 
-    alu dut(.a(a), .b(b), .alu_ctrl(alu_ctrl), .result(result));
+    alu dut(
+        .A(a),
+        .B(b),
+        .ALUControl(alu_ctrl),
+        .Result(result),
+        .Zero(zero)
+    );
 
     task check;
         input [31:0] expected;

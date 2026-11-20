@@ -1,48 +1,52 @@
+`timescale 1ns/1ps
+
 module alu (
     input  wire [31:0] A,
     input  wire [31:0] B,
-    input  wire [3:0] ALUControl,
+    input  wire [3:0]  ALUControl,
 
     output wire [31:0] Result,
-    output wire Zero
+    output wire        Zero
 );
 
     // ==========================================
-    // ALU CONTROL DECODING
+    // ALU CONTROL DECODING (PDF Table 3.8)
     // ==========================================
-
     // 0000 = ADD
     // 0001 = SUB
-    // 0010 = AND
-    // 0011 = OR
-    // 0100 = XOR
-    // 0101 = SLT
-    // 0110 = SLTU
-    // 0111 = SLL
-    // 1000 = SRL
-    // 1001 = SRA
+    // 0010 = SLL
+    // 0011 = SLT
+    // 0100 = SLTU
+    // 0101 = XOR
+    // 0110 = SRL
+    // 0111 = SRA
+    // 1000 = OR
+    // 1001 = AND
+    // 1010 = BSEL (pass-through B for LUI)
 
     wire sel_add;
     wire sel_sub;
-    wire sel_and;
-    wire sel_or;
-    wire sel_xor;
+    wire sel_sll;
     wire sel_slt;
     wire sel_sltu;
-    wire sel_sll;
+    wire sel_xor;
     wire sel_srl;
     wire sel_sra;
+    wire sel_or;
+    wire sel_and;
+    wire sel_bsel;
 
     assign sel_add  = (ALUControl == 4'b0000);
     assign sel_sub  = (ALUControl == 4'b0001);
-    assign sel_and  = (ALUControl == 4'b0010);
-    assign sel_or   = (ALUControl == 4'b0011);
-    assign sel_xor  = (ALUControl == 4'b0100);
-    assign sel_slt  = (ALUControl == 4'b0101);
-    assign sel_sltu = (ALUControl == 4'b0110);
-    assign sel_sll  = (ALUControl == 4'b0111);
-    assign sel_srl  = (ALUControl == 4'b1000);
-    assign sel_sra  = (ALUControl == 4'b1001);
+    assign sel_sll  = (ALUControl == 4'b0010);
+    assign sel_slt  = (ALUControl == 4'b0011);
+    assign sel_sltu = (ALUControl == 4'b0100);
+    assign sel_xor  = (ALUControl == 4'b0101);
+    assign sel_srl  = (ALUControl == 4'b0110);
+    assign sel_sra  = (ALUControl == 4'b0111);
+    assign sel_or   = (ALUControl == 4'b1000);
+    assign sel_and  = (ALUControl == 4'b1001);
+    assign sel_bsel = (ALUControl == 4'b1010);
 
 
     // ==========================================
@@ -155,6 +159,7 @@ module alu (
     wire [31:0] r_sll;
     wire [31:0] r_srl;
     wire [31:0] r_sra;
+    wire [31:0] r_bsel;
 
     wire [31:0] result_group1;
     wire [31:0] result_group2;
@@ -166,16 +171,17 @@ module alu (
         {32{sel_add | sel_sub}}
     );
 
-    and G2 (r_slt,  slt_result,  {32{sel_slt}});
-    and G3 (r_sltu, sltu_result, {32{sel_sltu}});
+    and G2  (r_slt,  slt_result,   {32{sel_slt}});
+    and G3  (r_sltu, sltu_result,  {32{sel_sltu}});
 
-    and G4 (r_and, and_result, {32{sel_and}});
-    and G5 (r_or,  or_result,  {32{sel_or}});
-    and G6 (r_xor, xor_result, {32{sel_xor}});
+    and G4  (r_and,  and_result,   {32{sel_and}});
+    and G5  (r_or,   or_result,    {32{sel_or}});
+    and G6  (r_xor,  xor_result,   {32{sel_xor}});
 
-    and G7 (r_sll, shift_result, {32{sel_sll}});
-    and G8 (r_srl, shift_result, {32{sel_srl}});
-    and G9 (r_sra, shift_result, {32{sel_sra}});
+    and G7  (r_sll,  shift_result, {32{sel_sll}});
+    and G8  (r_srl,  shift_result, {32{sel_srl}});
+    and G9  (r_sra,  shift_result, {32{sel_sra}});
+    and G10 (r_bsel, B,            {32{sel_bsel}});
 
     or RESULT1 (
         result_group1,
@@ -191,7 +197,8 @@ module alu (
         r_xor,
         r_sll,
         r_srl,
-        r_sra
+        r_sra,
+        r_bsel
     );
 
     or RESULT_FINAL (
