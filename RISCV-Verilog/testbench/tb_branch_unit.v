@@ -1,33 +1,35 @@
 `timescale 1ns/1ps
 module tb_branch_unit;
-    reg [2:0] funct3;
-    reg [31:0] rs1_data, rs2_data;
-    wire branch_taken;
+    reg [31:0] rs1_data, rs2_data; // A, B
+    reg br_un;                     // BrUn: 1 = unsigned, 0 = signed
+    wire br_eq, br_lt;             // BrEq, BrLT
 
     branch_unit dut(
-        .funct3(funct3), .rs1_data(rs1_data), .rs2_data(rs2_data), .branch_taken(branch_taken)
+        .rs1_data(rs1_data), .rs2_data(rs2_data), .br_un(br_un),
+        .br_eq(br_eq), .br_lt(br_lt)
     );
 
     task check;
-        input expected;
-        input [127:0] label;
+        input exp_eq;
+        input exp_lt;
+        input [255:0] label;
         begin
             #1;
-            if (branch_taken !== expected)
-                $fatal(1,"Branch %0s failed: got %b expected %b",label,branch_taken,expected);
-            else $display("PASS branch: %0s",label);
+            if ((br_eq !== exp_eq) || (br_lt !== exp_lt))
+                $fatal(1, "Branch Comp %0s failed: got (BrEq=%b, BrLT=%b) expected (BrEq=%b, BrLT=%b)",
+                       label, br_eq, br_lt, exp_eq, exp_lt);
+            else
+                $display("PASS Branch Comp: %0s", label);
         end
     endtask
 
     initial begin
-        rs1_data=32'd5; rs2_data=32'd5;
-        funct3=3'b000; check(1,"BEQ true");
-        funct3=3'b001; check(0,"BNE false");
-        rs1_data=32'hFFFFFFFF; rs2_data=32'd1;
-        funct3=3'b100; check(1,"BLT signed");
-        funct3=3'b101; check(0,"BGE signed");
-        funct3=3'b110; check(0,"BLTU unsigned");
-        funct3=3'b111; check(1,"BGEU unsigned");
+        // Table 6.5: Verification of Branch Comparator
+        rs1_data = 32'h00000005; rs2_data = 32'h00000005; br_un = 1'b0; check(1'b1, 1'b0, "Equal (5 == 5)");
+        rs1_data = 32'hFFFFFFFF; rs2_data = 32'h00000001; br_un = 1'b0; check(1'b0, 1'b1, "Signed: -1 < 1");
+        rs1_data = 32'hFFFFFFFF; rs2_data = 32'h00000001; br_un = 1'b1; check(1'b0, 1'b0, "Unsigned: 4294967295 > 1");
+        rs1_data = 32'h00000002; rs2_data = 32'h00000009; br_un = 1'b0; check(1'b0, 1'b1, "2 < 9");
+
         $display("tb_branch_unit: all tests passed");
         $finish;
     end
