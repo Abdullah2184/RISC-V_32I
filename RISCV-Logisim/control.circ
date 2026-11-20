@@ -267,9 +267,9 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(140,900)" to="(160,900)"/>
     <wire from="(140,1060)" to="(160,1060)"/>
     <wire from="(770,960)" to="(800,960)"/>
-    <wire from="(210,1050)" to="(230,1050)"/>
     <wire from="(230,430)" to="(250,430)"/>
     <wire from="(230,350)" to="(250,350)"/>
+    <wire from="(210,1050)" to="(230,1050)"/>
     <wire from="(230,270)" to="(250,270)"/>
     <wire from="(230,110)" to="(250,110)"/>
     <wire from="(230,190)" to="(250,190)"/>
@@ -346,159 +346,75 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1140,800)" to="(1160,800)"/>
     <wire from="(1190,1090)" to="(1210,1090)"/>
     <wire from="(1210,1030)" to="(1230,1030)"/>
-    <comp lib="0" loc="(1090,1090)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="1" loc="(180,1090)" name="NOT Gate"/>
-    <comp lib="0" loc="(630,1070)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JALR_t"/>
-    </comp>
-    <comp lib="0" loc="(250,510)" name="Tunnel">
-      <a name="label" val="JALR_t"/>
-    </comp>
-    <comp lib="1" loc="(1260,840)" name="OR Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="0" loc="(140,930)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="Load_t"/>
-    </comp>
-    <comp lib="1" loc="(670,1100)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(140,780)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="Branch_t"/>
-    </comp>
-    <comp lib="1" loc="(180,1030)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(360,920)" name="Tunnel">
-      <a name="width" val="3"/>
-      <a name="label" val="ALU-op_t"/>
-    </comp>
-    <comp lib="0" loc="(620,920)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="0" loc="(820,950)" name="Splitter">
-      <a name="facing" val="west"/>
-    </comp>
-    <comp lib="6" loc="(713,1139)" name="Text">
-      <a name="text" val="IF WE ADD &quot;AUIPC&quot; INSTRUCTION THEN OUTPUT MUST BE &quot;01&quot;"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(140,990)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="I-format_t"/>
-    </comp>
-    <comp lib="0" loc="(630,1050)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="LUI_t"/>
-    </comp>
-    <comp lib="0" loc="(1100,790)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="0" loc="(140,810)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="I-format_t"/>
-    </comp>
-    <comp lib="0" loc="(690,100)" name="Tunnel">
+    <comp lib="0" loc="(90,80)" name="Pin">
       <a name="facing" val="south"/>
-      <a name="label" val="Branch_t"/>
+      <a name="width" val="7"/>
+      <a name="label" val="OPCODE"/>
+      <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="0" loc="(1100,760)" name="Tunnel">
+    <comp lib="0" loc="(150,500)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x67"/>
+    </comp>
+    <comp lib="0" loc="(1090,1120)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="Branch_t"/>
-    </comp>
-    <comp lib="0" loc="(1200,410)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="3"/>
-      <a name="label" val="ALU-op_t"/>
-    </comp>
-    <comp lib="0" loc="(620,880)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="LUI_t"/>
-    </comp>
-    <comp lib="1" loc="(1120,960)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(260,940)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="0" loc="(250,350)" name="Tunnel">
-      <a name="label" val="Branch_t"/>
-    </comp>
-    <comp lib="0" loc="(630,1100)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JAL_t"/>
+      <a name="label" val="JALR_t"/>
     </comp>
     <comp lib="0" loc="(630,980)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="JALR_t"/>
     </comp>
-    <comp lib="1" loc="(180,1120)" name="NOT Gate"/>
-    <comp lib="0" loc="(1200,660)" name="Tunnel">
+    <comp lib="1" loc="(660,980)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(1130,790)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(180,900)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(1190,990)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="1" loc="(1130,860)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(140,930)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="width" val="2"/>
-      <a name="label" val="next-pc_t"/>
+      <a name="label" val="Load_t"/>
     </comp>
-    <comp lib="1" loc="(180,990)" name="NOT Gate">
+    <comp lib="1" loc="(1140,920)" name="NOT Gate">
       <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(920,100)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="1" loc="(180,1060)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(1120,1090)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(1250,290)" name="Pin">
-      <a name="output" val="true"/>
-      <a name="label" val="Reg_Write"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(1200,470)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="2"/>
-      <a name="label" val="op-A_sel"/>
     </comp>
     <comp lib="6" loc="(1327,799)" name="Text">
       <a name="text" val="next_pc_select"/>
       <a name="font" val="SansSerif bold 16"/>
     </comp>
-    <comp lib="0" loc="(1240,660)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-      <a name="labelloc" val="east"/>
+    <comp lib="0" loc="(140,1030)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="R-format_t"/>
     </comp>
-    <comp lib="0" loc="(620,960)" name="Tunnel">
+    <comp lib="0" loc="(620,880)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="LUI_t"/>
     </comp>
-    <comp lib="0" loc="(1260,540)" name="Pin">
-      <a name="output" val="true"/>
-      <a name="label" val="operand_B_sel"/>
-      <a name="labelloc" val="east"/>
+    <comp lib="0" loc="(620,100)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="Store_t"/>
     </comp>
-    <comp lib="1" loc="(720,820)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="3"/>
+    <comp lib="1" loc="(660,790)" name="NOT Gate">
+      <a name="size" val="20"/>
     </comp>
-    <comp lib="0" loc="(140,1090)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="Branch_t"/>
+    <comp lib="0" loc="(770,100)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="I-format_t"/>
     </comp>
-    <comp lib="1" loc="(720,900)" name="AND Gate">
+    <comp lib="3" loc="(230,430)" name="Comparator">
+      <a name="width" val="7"/>
+      <a name="mode" val="unsigned"/>
+    </comp>
+    <comp lib="1" loc="(720,980)" name="AND Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="3"/>
     </comp>
@@ -506,7 +422,201 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="7"/>
       <a name="value" val="0x63"/>
     </comp>
+    <comp lib="0" loc="(630,1050)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="LUI_t"/>
+    </comp>
+    <comp lib="0" loc="(140,780)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Branch_t"/>
+    </comp>
+    <comp lib="0" loc="(620,790)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="LUI_t"/>
+    </comp>
+    <comp lib="0" loc="(1200,470)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="2"/>
+      <a name="label" val="op-A_sel"/>
+    </comp>
+    <comp lib="0" loc="(850,100)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="3" loc="(230,190)" name="Comparator">
+      <a name="width" val="7"/>
+      <a name="mode" val="unsigned"/>
+    </comp>
+    <comp lib="0" loc="(250,350)" name="Tunnel">
+      <a name="label" val="Branch_t"/>
+    </comp>
+    <comp lib="0" loc="(1110,890)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
+    <comp lib="0" loc="(1340,970)" name="Splitter">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="0" loc="(1370,970)" name="Tunnel">
+      <a name="width" val="2"/>
+      <a name="label" val="next-pc_t"/>
+    </comp>
+    <comp lib="0" loc="(1110,820)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="0" loc="(1090,1060)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Branch_t"/>
+    </comp>
+    <comp lib="1" loc="(1120,960)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(180,1090)" name="NOT Gate"/>
+    <comp lib="3" loc="(230,590)" name="Comparator">
+      <a name="width" val="7"/>
+      <a name="mode" val="unsigned"/>
+    </comp>
+    <comp lib="1" loc="(660,1010)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(180,930)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(180,840)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(1260,540)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="label" val="operand_B_sel"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="1" loc="(180,1030)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(470,100)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="R-format_t"/>
+    </comp>
+    <comp lib="0" loc="(150,580)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x6f"/>
+    </comp>
+    <comp lib="1" loc="(740,1070)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="0" loc="(150,260)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x23"/>
+    </comp>
+    <comp lib="0" loc="(1240,610)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="2"/>
+      <a name="label" val="extend_sel"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="3" loc="(230,350)" name="Comparator">
+      <a name="width" val="7"/>
+    </comp>
+    <comp lib="1" loc="(1120,1120)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(180,750)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(1100,920)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="1" loc="(1090,290)" name="OR Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="6"/>
+    </comp>
+    <comp lib="1" loc="(1190,890)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="0" loc="(1240,660)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="2"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(140,990)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="I-format_t"/>
+    </comp>
+    <comp lib="0" loc="(630,900)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="0" loc="(140,810)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="I-format_t"/>
+    </comp>
+    <comp lib="6" loc="(804,771)" name="Text">
+      <a name="text" val="operand_A_select"/>
+      <a name="font" val="SansSerif bold 16"/>
+    </comp>
+    <comp lib="1" loc="(180,870)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(670,1070)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(1250,190)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="label" val="Branch"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="1" loc="(260,940)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
+    </comp>
+    <comp lib="0" loc="(630,1100)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
+    <comp lib="0" loc="(140,1120)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="LUI_t"/>
+    </comp>
+    <comp lib="0" loc="(1090,990)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
+    <comp lib="0" loc="(550,100)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="Load_t"/>
+    </comp>
+    <comp lib="0" loc="(820,950)" name="Splitter">
+      <a name="facing" val="west"/>
+    </comp>
+    <comp lib="1" loc="(1120,990)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(1260,1040)" name="OR Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(250,670)" name="Tunnel">
+      <a name="label" val="LUI_t"/>
+    </comp>
+    <comp lib="0" loc="(630,820)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="0" loc="(620,920)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
     <comp lib="0" loc="(620,850)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
+    <comp lib="0" loc="(1100,790)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="JAL_t"/>
     </comp>
@@ -514,194 +624,120 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="facing" val="east"/>
       <a name="label" val="Store_t"/>
     </comp>
-    <comp lib="1" loc="(660,820)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(1230,470)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-      <a name="label" val="operand_A_sel"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="1" loc="(1190,790)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="3"/>
-    </comp>
-    <comp lib="0" loc="(150,580)" name="Constant">
-      <a name="width" val="7"/>
-      <a name="value" val="0x6f"/>
-    </comp>
-    <comp lib="0" loc="(1090,1020)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JALR_t"/>
-    </comp>
-    <comp lib="0" loc="(150,260)" name="Constant">
-      <a name="width" val="7"/>
-      <a name="value" val="0x23"/>
-    </comp>
-    <comp lib="0" loc="(140,1030)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="R-format_t"/>
-    </comp>
-    <comp lib="0" loc="(850,100)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="JALR_t"/>
-    </comp>
-    <comp lib="0" loc="(620,100)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="Store_t"/>
-    </comp>
-    <comp lib="0" loc="(1090,990)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="0" loc="(250,670)" name="Tunnel">
-      <a name="label" val="LUI_t"/>
-    </comp>
-    <comp lib="0" loc="(250,270)" name="Tunnel">
-      <a name="label" val="Store_t"/>
-    </comp>
-    <comp lib="0" loc="(770,100)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="I-format_t"/>
-    </comp>
-    <comp lib="3" loc="(230,590)" name="Comparator">
-      <a name="width" val="7"/>
-      <a name="mode" val="unsigned"/>
-    </comp>
-    <comp lib="0" loc="(1110,890)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="0" loc="(1250,140)" name="Pin">
-      <a name="output" val="true"/>
-      <a name="label" val="Mem_Write"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(250,190)" name="Tunnel">
-      <a name="label" val="Load_t"/>
-    </comp>
-    <comp lib="0" loc="(140,900)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="R-format_t"/>
-    </comp>
-    <comp lib="1" loc="(1190,890)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1090,1120)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JALR_t"/>
-    </comp>
-    <comp lib="1" loc="(180,780)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(1130,790)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(1250,240)" name="Pin">
-      <a name="output" val="true"/>
-      <a name="label" val="Mem_Read"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(630,900)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JALR_t"/>
-    </comp>
     <comp lib="0" loc="(150,100)" name="Constant">
       <a name="width" val="7"/>
       <a name="value" val="0x33"/>
-    </comp>
-    <comp lib="0" loc="(90,80)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="7"/>
-      <a name="label" val="OPCODE"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(180,900)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(620,1010)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="0" loc="(630,820)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JALR_t"/>
     </comp>
     <comp lib="0" loc="(1090,960)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="Branch_t"/>
     </comp>
-    <comp lib="0" loc="(980,100)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="LUI_t"/>
+    <comp lib="0" loc="(1250,290)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="label" val="Reg_Write"/>
+      <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="1" loc="(1130,860)" name="NOT Gate">
+    <comp lib="0" loc="(320,920)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="fanout" val="3"/>
+      <a name="incoming" val="3"/>
+      <a name="bit0" val="2"/>
+      <a name="bit2" val="0"/>
+    </comp>
+    <comp lib="1" loc="(1120,1090)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="0" loc="(550,100)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="Load_t"/>
+    <comp lib="0" loc="(1250,350)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="label" val="Mem_to_Reg"/>
+      <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(140,1060)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="Load_t"/>
+    <comp lib="3" loc="(230,510)" name="Comparator">
+      <a name="width" val="7"/>
+      <a name="mode" val="unsigned"/>
     </comp>
-    <comp lib="1" loc="(740,1070)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="3"/>
+    <comp lib="6" loc="(349,770)" name="Text">
+      <a name="text" val="ALU-operator_select"/>
+      <a name="font" val="SansSerif bold 16"/>
     </comp>
-    <comp lib="1" loc="(660,880)" name="NOT Gate">
-      <a name="size" val="20"/>
+    <comp lib="0" loc="(250,590)" name="Tunnel">
+      <a name="label" val="JAL_t"/>
     </comp>
-    <comp lib="1" loc="(1120,1120)" name="NOT Gate">
+    <comp lib="1" loc="(180,810)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
     <comp lib="1" loc="(780,900)" name="OR Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="3"/>
     </comp>
-    <comp lib="0" loc="(1370,970)" name="Tunnel">
-      <a name="width" val="2"/>
-      <a name="label" val="next-pc_t"/>
-    </comp>
-    <comp lib="0" loc="(1100,860)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="Branch_t"/>
-    </comp>
-    <comp lib="0" loc="(150,500)" name="Constant">
-      <a name="width" val="7"/>
-      <a name="value" val="0x67"/>
-    </comp>
-    <comp lib="1" loc="(720,980)" name="AND Gate">
+    <comp lib="1" loc="(1190,790)" name="AND Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="3"/>
     </comp>
-    <comp lib="1" loc="(660,1010)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(140,1120)" name="Tunnel">
+    <comp lib="0" loc="(1200,410)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="LUI_t"/>
+      <a name="width" val="3"/>
+      <a name="label" val="ALU-op_t"/>
     </comp>
-    <comp lib="0" loc="(140,870)" name="Tunnel">
+    <comp lib="0" loc="(1090,1090)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="JAL_t"/>
     </comp>
-    <comp lib="0" loc="(1140,610)" name="Splitter">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(1250,240)" name="Pin">
+      <a name="output" val="true"/>
+      <a name="label" val="Mem_Read"/>
+      <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(1090,1060)" name="Tunnel">
+    <comp lib="0" loc="(620,960)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="Branch_t"/>
+      <a name="label" val="LUI_t"/>
     </comp>
-    <comp lib="0" loc="(1110,820)" name="Tunnel">
+    <comp lib="1" loc="(660,820)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(850,950)" name="Tunnel">
+      <a name="width" val="2"/>
+      <a name="label" val="op-A_sel"/>
+    </comp>
+    <comp lib="0" loc="(1090,1020)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="JALR_t"/>
     </comp>
-    <comp lib="3" loc="(230,110)" name="Comparator">
+    <comp lib="0" loc="(630,1070)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="1" loc="(720,820)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="1" loc="(180,780)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(1130,760)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(140,900)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="R-format_t"/>
+    </comp>
+    <comp lib="0" loc="(150,660)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x37"/>
+    </comp>
+    <comp lib="0" loc="(360,920)" name="Tunnel">
+      <a name="width" val="3"/>
+      <a name="label" val="ALU-op_t"/>
+    </comp>
+    <comp lib="0" loc="(920,100)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
+    <comp lib="1" loc="(260,1070)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
+    </comp>
+    <comp lib="3" loc="(230,670)" name="Comparator">
       <a name="width" val="7"/>
       <a name="mode" val="unsigned"/>
     </comp>
@@ -709,51 +745,63 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="7"/>
       <a name="mode" val="unsigned"/>
     </comp>
-    <comp lib="1" loc="(660,790)" name="NOT Gate">
+    <comp lib="6" loc="(713,1139)" name="Text">
+      <a name="text" val="IF WE ADD &quot;AUIPC&quot; INSTRUCTION THEN OUTPUT MUST BE &quot;01&quot;"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(140,1090)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Branch_t"/>
+    </comp>
+    <comp lib="1" loc="(180,1120)" name="NOT Gate"/>
+    <comp lib="0" loc="(140,750)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="R-format_t"/>
+    </comp>
+    <comp lib="1" loc="(180,960)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="0" loc="(250,430)" name="Tunnel">
-      <a name="label" val="I-format_t"/>
+    <comp lib="0" loc="(1200,660)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="2"/>
+      <a name="label" val="next-pc_t"/>
     </comp>
-    <comp lib="0" loc="(1340,970)" name="Splitter">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(140,870)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
+    <comp lib="1" loc="(1260,840)" name="OR Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(140,1060)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Load_t"/>
     </comp>
     <comp lib="1" loc="(660,920)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="1" loc="(1140,920)" name="NOT Gate">
+    <comp lib="0" loc="(1100,860)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Branch_t"/>
+    </comp>
+    <comp lib="1" loc="(180,990)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="3" loc="(230,430)" name="Comparator">
+    <comp lib="1" loc="(180,1060)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(150,180)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x3"/>
+    </comp>
+    <comp lib="3" loc="(230,110)" name="Comparator">
       <a name="width" val="7"/>
       <a name="mode" val="unsigned"/>
     </comp>
-    <comp lib="1" loc="(1190,990)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="3"/>
-    </comp>
-    <comp lib="1" loc="(180,750)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(150,660)" name="Constant">
-      <a name="width" val="7"/>
-      <a name="value" val="0x37"/>
-    </comp>
-    <comp lib="0" loc="(470,100)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="R-format_t"/>
-    </comp>
-    <comp lib="0" loc="(150,420)" name="Constant">
-      <a name="width" val="7"/>
-      <a name="value" val="0x13"/>
-    </comp>
-    <comp lib="1" loc="(1090,290)" name="OR Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="6"/>
-    </comp>
-    <comp lib="0" loc="(1250,350)" name="Pin">
+    <comp lib="0" loc="(1250,140)" name="Pin">
       <a name="output" val="true"/>
-      <a name="label" val="Mem_to_Reg"/>
+      <a name="label" val="Mem_Write"/>
       <a name="labelloc" val="east"/>
     </comp>
     <comp lib="0" loc="(1230,410)" name="Pin">
@@ -763,123 +811,75 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="ALU_op"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="1" loc="(1120,990)" name="NOT Gate">
-      <a name="size" val="20"/>
+    <comp lib="0" loc="(1100,760)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Branch_t"/>
     </comp>
-    <comp lib="1" loc="(180,960)" name="NOT Gate">
-      <a name="size" val="20"/>
+    <comp lib="1" loc="(260,810)" name="AND Gate">
+      <a name="size" val="30"/>
     </comp>
-    <comp lib="6" loc="(804,771)" name="Text">
-      <a name="text" val="operand_A_select"/>
-      <a name="font" val="SansSerif bold 16"/>
-    </comp>
-    <comp lib="3" loc="(230,350)" name="Comparator">
-      <a name="width" val="7"/>
-    </comp>
-    <comp lib="1" loc="(1190,1090)" name="AND Gate">
+    <comp lib="1" loc="(720,900)" name="AND Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="3"/>
     </comp>
     <comp lib="0" loc="(250,110)" name="Tunnel">
       <a name="label" val="R-format_t"/>
     </comp>
-    <comp lib="0" loc="(1250,190)" name="Pin">
-      <a name="output" val="true"/>
-      <a name="label" val="Branch"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(250,590)" name="Tunnel">
-      <a name="label" val="JAL_t"/>
-    </comp>
-    <comp lib="3" loc="(230,510)" name="Comparator">
-      <a name="width" val="7"/>
-      <a name="mode" val="unsigned"/>
-    </comp>
-    <comp lib="0" loc="(1240,610)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-      <a name="label" val="extend_sel"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="3" loc="(230,670)" name="Comparator">
-      <a name="width" val="7"/>
-      <a name="mode" val="unsigned"/>
-    </comp>
-    <comp lib="6" loc="(349,770)" name="Text">
-      <a name="text" val="ALU-operator_select"/>
-      <a name="font" val="SansSerif bold 16"/>
-    </comp>
-    <comp lib="1" loc="(180,930)" name="NOT Gate">
+    <comp lib="1" loc="(670,1100)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="0" loc="(140,750)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="R-format_t"/>
-    </comp>
-    <comp lib="1" loc="(180,810)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(620,790)" name="Tunnel">
-      <a name="facing" val="east"/>
+    <comp lib="0" loc="(980,100)" name="Tunnel">
+      <a name="facing" val="south"/>
       <a name="label" val="LUI_t"/>
-    </comp>
-    <comp lib="1" loc="(260,1070)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="3" loc="(230,190)" name="Comparator">
-      <a name="width" val="7"/>
-      <a name="mode" val="unsigned"/>
-    </comp>
-    <comp lib="1" loc="(180,840)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(260,810)" name="AND Gate">
-      <a name="size" val="30"/>
-    </comp>
-    <comp lib="1" loc="(660,980)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(180,870)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(150,180)" name="Constant">
-      <a name="width" val="7"/>
-      <a name="value" val="0x3"/>
-    </comp>
-    <comp lib="0" loc="(140,840)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="JALR_t"/>
-    </comp>
-    <comp lib="1" loc="(670,1070)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(320,920)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="fanout" val="3"/>
-      <a name="incoming" val="3"/>
-      <a name="bit0" val="2"/>
-      <a name="bit2" val="0"/>
-    </comp>
-    <comp lib="1" loc="(1130,760)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(850,950)" name="Tunnel">
-      <a name="width" val="2"/>
-      <a name="label" val="op-A_sel"/>
-    </comp>
-    <comp lib="1" loc="(1260,1040)" name="OR Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="2"/>
     </comp>
     <comp lib="1" loc="(1150,540)" name="OR Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="4"/>
     </comp>
-    <comp lib="0" loc="(1100,920)" name="Tunnel">
+    <comp lib="0" loc="(690,100)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="Branch_t"/>
+    </comp>
+    <comp lib="0" loc="(250,270)" name="Tunnel">
+      <a name="label" val="Store_t"/>
+    </comp>
+    <comp lib="0" loc="(250,190)" name="Tunnel">
+      <a name="label" val="Load_t"/>
+    </comp>
+    <comp lib="0" loc="(1140,610)" name="Splitter">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="1" loc="(660,880)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(140,840)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="1" loc="(1190,1090)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="0" loc="(250,510)" name="Tunnel">
+      <a name="label" val="JALR_t"/>
+    </comp>
+    <comp lib="0" loc="(1230,470)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="2"/>
+      <a name="label" val="operand_A_sel"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(620,1010)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="JAL_t"/>
+    </comp>
+    <comp lib="0" loc="(250,430)" name="Tunnel">
+      <a name="label" val="I-format_t"/>
+    </comp>
+    <comp lib="0" loc="(150,420)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x13"/>
     </comp>
   </circuit>
 </project>
