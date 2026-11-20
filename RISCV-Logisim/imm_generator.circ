@@ -106,6 +106,15 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <path d="M61,51 Q65,61 69,51" fill="none" stroke="#808080" stroke-width="2"/>
+      <rect fill="none" height="41" stroke="#000000" stroke-width="2" width="70" x="50" y="38"/>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="85" y="61">Imm Gen</text>
+      <circ-port height="8" pin="150,450" width="8" x="46" y="46"/>
+      <circ-port height="10" pin="760,280" width="10" x="115" y="55"/>
+      <circ-port height="8" pin="700,380" width="8" x="46" y="66"/>
+      <circ-anchor facing="east" height="6" width="6" x="117" y="57"/>
+    </appear>
     <wire from="(560,260)" to="(680,260)"/>
     <wire from="(340,410)" to="(400,410)"/>
     <wire from="(500,130)" to="(560,130)"/>
@@ -238,10 +247,112 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(370,300)" to="(370,490)"/>
     <wire from="(360,290)" to="(360,480)"/>
     <wire from="(550,100)" to="(560,100)"/>
-    <comp lib="0" loc="(420,390)" name="Splitter">
+    <comp lib="0" loc="(400,520)" name="Ground"/>
+    <comp lib="0" loc="(150,450)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Instruction"/>
+      <a name="labelloc" val="south"/>
+    </comp>
+    <comp lib="0" loc="(430,250)" name="Splitter">
       <a name="facing" val="west"/>
-      <a name="fanout" val="13"/>
+      <a name="fanout" val="8"/>
+      <a name="incoming" val="7"/>
+    </comp>
+    <comp lib="0" loc="(390,250)" name="Ground"/>
+    <comp lib="0" loc="(610,270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="32"/>
+      <a name="label" val="U-type_t"/>
+    </comp>
+    <comp lib="0" loc="(410,190)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="fanout" val="6"/>
+      <a name="incoming" val="5"/>
+    </comp>
+    <comp lib="0" loc="(560,260)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="32"/>
+      <a name="label" val="B-type_t"/>
+    </comp>
+    <comp lib="0" loc="(660,90)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="B-type_t"/>
+    </comp>
+    <comp lib="0" loc="(620,250)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="32"/>
+      <a name="label" val="S-type_t"/>
+    </comp>
+    <comp lib="0" loc="(550,390)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="I-type_t"/>
+    </comp>
+    <comp lib="0" loc="(540,200)" name="Bit Extender">
+      <a name="in_width" val="12"/>
+      <a name="out_width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(530,390)" name="Bit Extender">
+      <a name="in_width" val="12"/>
+      <a name="out_width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(470,150)" name="Splitter">
+      <a name="incoming" val="7"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="1"/>
+    </comp>
+    <comp lib="0" loc="(460,230)" name="Ground"/>
+    <comp lib="0" loc="(550,200)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="S-type_t"/>
+    </comp>
+    <comp lib="0" loc="(670,280)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="32"/>
+      <a name="label" val="J-type_t"/>
+    </comp>
+    <comp lib="0" loc="(130,170)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(480,200)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="fanout" val="3"/>
       <a name="incoming" val="12"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="1"/>
+      <a name="bit7" val="1"/>
+      <a name="bit8" val="1"/>
+      <a name="bit9" val="1"/>
+      <a name="bit10" val="1"/>
+      <a name="bit11" val="1"/>
+    </comp>
+    <comp lib="0" loc="(760,280)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="Immediate"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(700,380)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="width" val="3"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(220,450)" name="Splitter">
+      <a name="fanout" val="32"/>
+      <a name="incoming" val="32"/>
+    </comp>
+    <comp lib="0" loc="(240,100)" name="Bit Extender">
+      <a name="in_width" val="21"/>
+      <a name="out_width" val="32"/>
     </comp>
     <comp lib="0" loc="(580,90)" name="Splitter">
       <a name="facing" val="west"/>
@@ -259,41 +370,27 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit11" val="3"/>
       <a name="bit12" val="4"/>
     </comp>
-    <comp lib="0" loc="(530,390)" name="Bit Extender">
-      <a name="in_width" val="12"/>
-      <a name="out_width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(470,150)" name="Splitter">
-      <a name="incoming" val="7"/>
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="0"/>
-      <a name="bit6" val="1"/>
-    </comp>
-    <comp lib="0" loc="(650,90)" name="Bit Extender">
-      <a name="in_width" val="13"/>
-      <a name="out_width" val="32"/>
+    <comp lib="0" loc="(100,340)" name="Splitter">
+      <a name="fanout" val="9"/>
+      <a name="incoming" val="20"/>
+      <a name="bit9" val="8"/>
+      <a name="bit10" val="8"/>
+      <a name="bit11" val="8"/>
+      <a name="bit12" val="8"/>
+      <a name="bit13" val="8"/>
+      <a name="bit14" val="8"/>
+      <a name="bit15" val="8"/>
+      <a name="bit16" val="8"/>
+      <a name="bit17" val="8"/>
+      <a name="bit18" val="8"/>
+      <a name="bit19" val="8"/>
     </comp>
     <comp lib="0" loc="(130,370)" name="Bit Extender">
       <a name="in_width" val="20"/>
       <a name="out_width" val="32"/>
     </comp>
-    <comp lib="0" loc="(390,250)" name="Ground"/>
-    <comp lib="0" loc="(150,450)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="tristate" val="false"/>
-    </comp>
-    <comp lib="0" loc="(130,170)" name="Constant">
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(550,390)" name="Tunnel">
-      <a name="width" val="32"/>
-      <a name="label" val="I-type_t"/>
-    </comp>
-    <comp lib="0" loc="(460,230)" name="Ground"/>
-    <comp lib="0" loc="(160,340)" name="Tunnel">
+    <comp lib="0" loc="(450,410)" name="Tunnel">
+      <a name="facing" val="north"/>
       <a name="width" val="12"/>
       <a name="label" val="20-31_t"/>
     </comp>
@@ -307,52 +404,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     </comp>
     <comp lib="0" loc="(710,330)" name="Constant">
       <a name="facing" val="north"/>
-    </comp>
-    <comp lib="0" loc="(550,200)" name="Tunnel">
-      <a name="width" val="32"/>
-      <a name="label" val="S-type_t"/>
-    </comp>
-    <comp lib="0" loc="(220,450)" name="Splitter">
-      <a name="fanout" val="32"/>
-      <a name="incoming" val="32"/>
-    </comp>
-    <comp lib="0" loc="(430,250)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="fanout" val="8"/>
-      <a name="incoming" val="7"/>
-    </comp>
-    <comp lib="0" loc="(410,330)" name="Ground"/>
-    <comp lib="0" loc="(260,100)" name="Tunnel">
-      <a name="width" val="32"/>
-      <a name="label" val="J-type_t"/>
-    </comp>
-    <comp lib="0" loc="(760,280)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="32"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(450,410)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="width" val="12"/>
-      <a name="label" val="20-31_t"/>
-    </comp>
-    <comp lib="0" loc="(610,270)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="32"/>
-      <a name="label" val="U-type_t"/>
-    </comp>
-    <comp lib="0" loc="(660,90)" name="Tunnel">
-      <a name="width" val="32"/>
-      <a name="label" val="B-type_t"/>
-    </comp>
-    <comp lib="0" loc="(550,100)" name="Constant">
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(410,190)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="fanout" val="6"/>
-      <a name="incoming" val="5"/>
     </comp>
     <comp lib="0" loc="(180,160)" name="Splitter">
       <a name="facing" val="west"/>
@@ -378,53 +429,35 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit19" val="3"/>
       <a name="bit20" val="4"/>
     </comp>
-    <comp lib="0" loc="(400,520)" name="Ground"/>
     <comp lib="0" loc="(670,240)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="32"/>
       <a name="label" val="I-type_t"/>
     </comp>
-    <comp lib="0" loc="(620,250)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="32"/>
-      <a name="label" val="S-type_t"/>
-    </comp>
-    <comp lib="0" loc="(240,100)" name="Bit Extender">
-      <a name="in_width" val="21"/>
-      <a name="out_width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(560,260)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="32"/>
-      <a name="label" val="B-type_t"/>
-    </comp>
     <comp lib="0" loc="(140,370)" name="Tunnel">
       <a name="width" val="32"/>
       <a name="label" val="U-type_t"/>
     </comp>
-    <comp lib="0" loc="(670,280)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="32"/>
-      <a name="label" val="J-type_t"/>
+    <comp lib="0" loc="(650,90)" name="Bit Extender">
+      <a name="in_width" val="13"/>
+      <a name="out_width" val="32"/>
     </comp>
-    <comp lib="0" loc="(100,340)" name="Splitter">
-      <a name="fanout" val="9"/>
-      <a name="incoming" val="20"/>
-      <a name="bit9" val="8"/>
-      <a name="bit10" val="8"/>
-      <a name="bit11" val="8"/>
-      <a name="bit12" val="8"/>
-      <a name="bit13" val="8"/>
-      <a name="bit14" val="8"/>
-      <a name="bit15" val="8"/>
-      <a name="bit16" val="8"/>
-      <a name="bit17" val="8"/>
-      <a name="bit18" val="8"/>
-      <a name="bit19" val="8"/>
-    </comp>
+    <comp lib="0" loc="(410,330)" name="Ground"/>
     <comp lib="2" loc="(720,280)" name="Multiplexer">
       <a name="select" val="3"/>
       <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(550,100)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(420,390)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="fanout" val="13"/>
+      <a name="incoming" val="12"/>
+    </comp>
+    <comp lib="0" loc="(260,100)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="J-type_t"/>
     </comp>
     <comp lib="0" loc="(90,220)" name="Splitter">
       <a name="fanout" val="4"/>
@@ -449,30 +482,9 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit18" val="2"/>
       <a name="bit19" val="3"/>
     </comp>
-    <comp lib="0" loc="(480,200)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="fanout" val="3"/>
-      <a name="incoming" val="12"/>
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="1"/>
-      <a name="bit6" val="1"/>
-      <a name="bit7" val="1"/>
-      <a name="bit8" val="1"/>
-      <a name="bit9" val="1"/>
-      <a name="bit10" val="1"/>
-      <a name="bit11" val="1"/>
-    </comp>
-    <comp lib="0" loc="(540,200)" name="Bit Extender">
-      <a name="in_width" val="12"/>
-      <a name="out_width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(700,380)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="width" val="3"/>
-      <a name="tristate" val="false"/>
+    <comp lib="0" loc="(160,340)" name="Tunnel">
+      <a name="width" val="12"/>
+      <a name="label" val="20-31_t"/>
     </comp>
   </circuit>
 </project>

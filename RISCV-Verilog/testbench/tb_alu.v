@@ -1,106 +1,39 @@
 `timescale 1ns/1ps
-
 module tb_alu;
+    reg [31:0] a, b;
+    reg [3:0] alu_ctrl;
+    wire [31:0] result;
 
-    reg [31:0] A;
-    reg [31:0] B;
-    reg [3:0] ALUControl;
+    alu dut(.a(a), .b(b), .alu_ctrl(alu_ctrl), .result(result));
 
-    wire [31:0] Result;
-    wire Zero;
-
-    alu DUT (
-        .A(A),
-        .B(B),
-        .ALUControl(ALUControl),
-        .Result(Result),
-        .Zero(Zero)
-    );
+    task check;
+        input [31:0] expected;
+        input [255:0] label;
+        begin
+            #1;
+            if (result !== expected)
+                $fatal(1, "ALU %0s failed: got %h expected %h", label, result, expected);
+            else
+                $display("PASS ALU: %0s", label);
+        end
+    endtask
 
     initial begin
-
-        // ADD: 10 + 5 = 15
-        A = 32'd10;
-        B = 32'd5;
-        ALUControl = 4'b0000;
-        #10;
-        $display("ADD: %d", Result);
-
-
-        // SUB: 10 - 5 = 5
-        A = 32'd10;
-        B = 32'd5;
-        ALUControl = 4'b0001;
-        #10;
-        $display("SUB: %d", Result);
-
-
-        // AND
-        A = 32'h0000000F;
-        B = 32'h00000003;
-        ALUControl = 4'b0010;
-        #10;
-        $display("AND: %h", Result);
-
-
-        // OR
-        A = 32'h0000000F;
-        B = 32'h00000003;
-        ALUControl = 4'b0011;
-        #10;
-        $display("OR: %h", Result);
-
-
-        // XOR
-        A = 32'h0000000F;
-        B = 32'h00000003;
-        ALUControl = 4'b0100;
-        #10;
-        $display("XOR: %h", Result);
-
-
-        // SLT: -5 < 3 (signed)
-        A = 32'hFFFFFFFB;
-        B = 32'd3;
-        ALUControl = 4'b0101;
-        #10;
-        $display("SLT: %d", Result);
-
-
-        // SLTU: 5 < 7 (unsigned)
-        A = 32'd5;
-        B = 32'd7;
-        ALUControl = 4'b0110;
-        #10;
-        $display("SLTU: %d", Result);
-
-
-        // SLL: 1 << 2 = 4
-        A = 32'd1;
-        B = 32'd2;
-        ALUControl = 4'b0111;
-        #10;
-        $display("SLL: %d", Result);
-
-
-        // SRL: 16 >> 2 = 4
-        A = 32'd16;
-        B = 32'd2;
-        ALUControl = 4'b1000;
-        #10;
-        $display("SRL: %d", Result);
-
-
-        // SRA: -16 >>> 2 = -4
-        A = 32'hFFFFFFF0;
-        B = 32'd2;
-        ALUControl = 4'b1001;
-        #10;
-        $display("SRA: %d", $signed(Result));
-
-
+        a = 32'd10; b = 32'd3;
+        alu_ctrl = 4'b0000; check(32'd13, "ADD");
+        alu_ctrl = 4'b0001; check(32'd7, "SUB");
+        alu_ctrl = 4'b0010; check(32'd2, "AND");
+        alu_ctrl = 4'b0011; check(32'd11, "OR");
+        alu_ctrl = 4'b0100; check(32'd9, "XOR");
+        alu_ctrl = 4'b0101; b = 32'd2; check(32'd40, "SLL");
+        a = 32'h80000000; b = 32'd1;
+        alu_ctrl = 4'b0110; check(32'h40000000, "SRL");
+        alu_ctrl = 4'b0111; check(32'hC0000000, "SRA");
+        a = 32'hFFFFFFFF; b = 32'd1;
+        alu_ctrl = 4'b1000; check(32'h00000001, "SLT signed");
+        alu_ctrl = 4'b1001; check(32'h00000000, "SLTU unsigned");
+        alu_ctrl = 4'b1010; check(32'h00000001, "PASS_B");
+        $display("tb_alu: all tests passed");
         $finish;
-
     end
-
 endmodule
