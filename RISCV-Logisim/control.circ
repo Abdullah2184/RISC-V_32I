@@ -112,6 +112,25 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <path d="M61,56 Q65,66 69,56" fill="none" stroke="#808080" stroke-width="2"/>
+      <rect fill="none" height="159" stroke="#000000" stroke-width="2" width="70" x="50" y="21"/>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="82" y="85">Control</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="82" y="99">Unit</text>
+      <circ-port height="8" pin="90,110" width="8" x="46" y="46"/>
+      <circ-port height="10" pin="1250,140" width="10" x="115" y="45"/>
+      <circ-port height="10" pin="1250,190" width="10" x="115" y="25"/>
+      <circ-port height="8" pin="70,250" width="8" x="46" y="96"/>
+      <circ-port height="10" pin="1250,290" width="10" x="95" y="175"/>
+      <circ-port height="8" pin="70,300" width="8" x="46" y="146"/>
+      <circ-port height="10" pin="1250,350" width="10" x="115" y="145"/>
+      <circ-port height="10" pin="1250,540" width="10" x="115" y="165"/>
+      <circ-port height="10" pin="1230,410" width="10" x="115" y="65"/>
+      <circ-port height="10" pin="1230,470" width="10" x="115" y="85"/>
+      <circ-port height="10" pin="1230,590" width="10" x="115" y="105"/>
+      <circ-port height="10" pin="970,640" width="10" x="115" y="125"/>
+      <circ-anchor facing="east" height="6" width="6" x="117" y="117"/>
+    </appear>
     <wire from="(670,910)" to="(670,920)"/>
     <wire from="(1140,1060)" to="(1140,1080)"/>
     <wire from="(790,870)" to="(790,880)"/>
@@ -922,6 +941,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="0" loc="(90,110)" name="Pin">
       <a name="width" val="32"/>
       <a name="tristate" val="false"/>
+      <a name="label" val="Instruction"/>
+      <a name="labelloc" val="north"/>
     </comp>
     <comp lib="3" loc="(320,270)" name="Comparator">
       <a name="width" val="7"/>
