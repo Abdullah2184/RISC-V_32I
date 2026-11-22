@@ -63,12 +63,8 @@ module alu (
     // Subtraction is required for SUB, SLT and SLTU.
     or (subtract_enable, sel_sub, sel_slt, sel_sltu);
 
-    // Invert B when performing subtraction (32-bit arrayed XOR primitive).
-    xor B_INVERT [31:0] (
-        adder_b,
-        B,
-        {32{subtract_enable}}
-    );
+    // Invert B when performing subtraction.
+    assign adder_b = B ^ {32{subtract_enable}};
 
     // The same 32-bit adder handles all four operations.
     adder_32bit ALU_ADDER (
@@ -121,9 +117,9 @@ module alu (
     wire [31:0] or_result;
     wire [31:0] xor_result;
 
-    and AND_GATE [31:0] (and_result, A, B);
-    or  OR_GATE  [31:0] (or_result,  A, B);
-    xor XOR_GATE [31:0] (xor_result, A, B);
+    assign and_result = A & B;
+    assign or_result  = A | B;
+    assign xor_result = A ^ B;
 
 
     // ==========================================
@@ -162,47 +158,20 @@ module alu (
     wire [31:0] result_group2;
 
     // ADD and SUB use the shared adder output.
-    and G1 [31:0] (
-        r_arithmetic,
-        adder_sum,
-        {32{sel_add | sel_sub}}
-    );
+    assign r_arithmetic = adder_sum & {32{sel_add | sel_sub}};
+    assign r_slt        = slt_result & {32{sel_slt}};
+    assign r_sltu       = sltu_result & {32{sel_sltu}};
+    assign r_and        = and_result & {32{sel_and}};
+    assign r_or         = or_result & {32{sel_or}};
+    assign r_xor        = xor_result & {32{sel_xor}};
+    assign r_sll        = shift_result & {32{sel_sll}};
+    assign r_srl        = shift_result & {32{sel_srl}};
+    assign r_sra        = shift_result & {32{sel_sra}};
+    assign r_bsel       = B & {32{sel_bsel}};
 
-    and G2  [31:0] (r_slt,  slt_result,   {32{sel_slt}});
-    and G3  [31:0] (r_sltu, sltu_result,  {32{sel_sltu}});
-
-    and G4  [31:0] (r_and,  and_result,   {32{sel_and}});
-    and G5  [31:0] (r_or,   or_result,    {32{sel_or}});
-    and G6  [31:0] (r_xor,  xor_result,   {32{sel_xor}});
-
-    and G7  [31:0] (r_sll,  shift_result, {32{sel_sll}});
-    and G8  [31:0] (r_srl,  shift_result, {32{sel_srl}});
-    and G9  [31:0] (r_sra,  shift_result, {32{sel_sra}});
-    and G10 [31:0] (r_bsel, B,            {32{sel_bsel}});
-
-    or RESULT1 [31:0] (
-        result_group1,
-        r_arithmetic,
-        r_slt,
-        r_sltu,
-        r_and,
-        r_or
-    );
-
-    or RESULT2 [31:0] (
-        result_group2,
-        r_xor,
-        r_sll,
-        r_srl,
-        r_sra,
-        r_bsel
-    );
-
-    or RESULT_FINAL [31:0] (
-        Result,
-        result_group1,
-        result_group2
-    );
+    assign result_group1 = r_arithmetic | r_slt | r_sltu | r_and | r_or;
+    assign result_group2 = r_xor | r_sll | r_srl | r_sra | r_bsel;
+    assign Result = result_group1 | result_group2;
 
 
     // ==========================================
