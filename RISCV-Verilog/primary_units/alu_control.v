@@ -34,7 +34,7 @@ module alu_control (
                     3'b010: alu_ctrl = ALU_SLT;
                     3'b011: alu_ctrl = ALU_SLTU;
                     3'b100: alu_ctrl = ALU_XOR;
-                    3'b101: alu_ctrl = funct7[5] ? ALU_SRA : ALU_SRL;
+                    3'b101: alu_ctrl = (funct7 == 7'b0100000) ? ALU_SRA : ALU_SRL;
                     3'b110: alu_ctrl = ALU_OR;
                     3'b111: alu_ctrl = ALU_AND;
                     default: alu_ctrl = ALU_ADD;

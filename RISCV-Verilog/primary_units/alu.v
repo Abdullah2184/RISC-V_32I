@@ -63,8 +63,8 @@ module alu (
     // Subtraction is required for SUB, SLT and SLTU.
     or (subtract_enable, sel_sub, sel_slt, sel_sltu);
 
-    // Invert B when performing subtraction.
-    xor B_INVERT (
+    // Invert B when performing subtraction (32-bit arrayed XOR primitive).
+    xor B_INVERT [31:0] (
         adder_b,
         B,
         {32{subtract_enable}}
@@ -90,9 +90,7 @@ module alu (
     wire slt_signed;
 
     xor (sign_difference, A[31], B[31]);
-
     xor (result_sign_difference, A[31], adder_sum[31]);
-
     and (signed_overflow, sign_difference, result_sign_difference);
 
     // Signed comparison accounts for subtraction overflow.
@@ -107,7 +105,6 @@ module alu (
 
     // No carry-out means a borrow occurred.
     not (slt_unsigned, adder_cout);
-
 
     wire [31:0] slt_result;
     wire [31:0] sltu_result;
@@ -124,9 +121,9 @@ module alu (
     wire [31:0] or_result;
     wire [31:0] xor_result;
 
-    and AND_GATE (and_result, A, B);
-    or  OR_GATE  (or_result, A, B);
-    xor XOR_GATE (xor_result, A, B);
+    and AND_GATE [31:0] (and_result, A, B);
+    or  OR_GATE  [31:0] (or_result,  A, B);
+    xor XOR_GATE [31:0] (xor_result, A, B);
 
 
     // ==========================================
@@ -165,25 +162,25 @@ module alu (
     wire [31:0] result_group2;
 
     // ADD and SUB use the shared adder output.
-    and G1 (
+    and G1 [31:0] (
         r_arithmetic,
         adder_sum,
         {32{sel_add | sel_sub}}
     );
 
-    and G2  (r_slt,  slt_result,   {32{sel_slt}});
-    and G3  (r_sltu, sltu_result,  {32{sel_sltu}});
+    and G2  [31:0] (r_slt,  slt_result,   {32{sel_slt}});
+    and G3  [31:0] (r_sltu, sltu_result,  {32{sel_sltu}});
 
-    and G4  (r_and,  and_result,   {32{sel_and}});
-    and G5  (r_or,   or_result,    {32{sel_or}});
-    and G6  (r_xor,  xor_result,   {32{sel_xor}});
+    and G4  [31:0] (r_and,  and_result,   {32{sel_and}});
+    and G5  [31:0] (r_or,   or_result,    {32{sel_or}});
+    and G6  [31:0] (r_xor,  xor_result,   {32{sel_xor}});
 
-    and G7  (r_sll,  shift_result, {32{sel_sll}});
-    and G8  (r_srl,  shift_result, {32{sel_srl}});
-    and G9  (r_sra,  shift_result, {32{sel_sra}});
-    and G10 (r_bsel, B,            {32{sel_bsel}});
+    and G7  [31:0] (r_sll,  shift_result, {32{sel_sll}});
+    and G8  [31:0] (r_srl,  shift_result, {32{sel_srl}});
+    and G9  [31:0] (r_sra,  shift_result, {32{sel_sra}});
+    and G10 [31:0] (r_bsel, B,            {32{sel_bsel}});
 
-    or RESULT1 (
+    or RESULT1 [31:0] (
         result_group1,
         r_arithmetic,
         r_slt,
@@ -192,7 +189,7 @@ module alu (
         r_or
     );
 
-    or RESULT2 (
+    or RESULT2 [31:0] (
         result_group2,
         r_xor,
         r_sll,
@@ -201,7 +198,7 @@ module alu (
         r_bsel
     );
 
-    or RESULT_FINAL (
+    or RESULT_FINAL [31:0] (
         Result,
         result_group1,
         result_group2
