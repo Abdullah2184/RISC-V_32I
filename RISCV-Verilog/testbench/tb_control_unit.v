@@ -1,42 +1,44 @@
 `timescale 1ns/1ps
 module tb_control_unit;
-    reg [6:0] opcode;
-    wire reg_write, mem_read, mem_write, alu_src, alu_a_sel, branch, jump, jalr;
+    reg [31:0] instruction;
+    reg br_eq, br_lt;
+    wire pc_sel, reg_wen, br_un, asel, bsel, mem_rw;
     wire [2:0] imm_sel;
-    wire [1:0] alu_op, wb_sel;
+    wire [3:0] alu_sel;
+    wire [1:0] wb_sel;
 
     control_unit dut(
-        .opcode(opcode), .reg_write(reg_write), .mem_read(mem_read), .mem_write(mem_write),
-        .alu_src(alu_src), .alu_a_sel(alu_a_sel), .branch(branch), .jump(jump), .jalr(jalr),
-        .imm_sel(imm_sel), .alu_op(alu_op), .wb_sel(wb_sel)
+        .instruction(instruction), .br_eq(br_eq), .br_lt(br_lt),
+        .pc_sel(pc_sel), .imm_sel(imm_sel), .reg_wen(reg_wen),
+        .br_un(br_un), .asel(asel), .bsel(bsel), .alu_sel(alu_sel),
+        .mem_rw(mem_rw), .wb_sel(wb_sel)
     );
 
-    task check_control;
-        input exp_reg_write, exp_mem_read, exp_mem_write, exp_alu_src;
-        input exp_alu_a_sel, exp_branch, exp_jump, exp_jalr;
-        input [2:0] exp_imm_sel;
-        input [1:0] exp_alu_op, exp_wb_sel;
+    task check;
+        input [31:0] inst;
+        input t_br_eq, t_br_lt;
+        input [14:0] expected;
         input [127:0] label;
         begin
+            instruction = inst;
+            br_eq = t_br_eq;
+            br_lt = t_br_lt;
             #1;
-            if ({reg_write,mem_read,mem_write,alu_src,alu_a_sel,branch,jump,jalr,imm_sel,alu_op,wb_sel} !==
-                {exp_reg_write,exp_mem_read,exp_mem_write,exp_alu_src,exp_alu_a_sel,exp_branch,exp_jump,exp_jalr,exp_imm_sel,exp_alu_op,exp_wb_sel})
-                $fatal(1,"Control decode failed: %0s",label);
-            else $display("PASS control: %0s",label);
+            if ({pc_sel,imm_sel,reg_wen,br_un,asel,bsel,alu_sel,mem_rw,wb_sel} !== expected)
+                $fatal(1, "Control decode failed: %0s got %b expected %b", label,
+                       {pc_sel,imm_sel,reg_wen,br_un,asel,bsel,alu_sel,mem_rw,wb_sel}, expected);
         end
     endtask
 
     initial begin
-        opcode=7'b0110011; check_control(1,0,0,0,0,0,0,0,3'b000,2'b01,2'b00,"R-type");
-        opcode=7'b0010011; check_control(1,0,0,1,0,0,0,0,3'b000,2'b01,2'b00,"I arithmetic");
-        opcode=7'b0000011; check_control(1,1,0,1,0,0,0,0,3'b000,2'b00,2'b01,"load");
-        opcode=7'b0100011; check_control(0,0,1,1,0,0,0,0,3'b001,2'b00,2'b00,"store");
-        opcode=7'b1100011; check_control(0,0,0,0,0,1,0,0,3'b010,2'b10,2'b00,"branch");
-        opcode=7'b0110111; check_control(1,0,0,1,0,0,0,0,3'b011,2'b11,2'b00,"LUI");
-        opcode=7'b0010111; check_control(1,0,0,1,1,0,0,0,3'b011,2'b00,2'b00,"AUIPC");
-        opcode=7'b1101111; check_control(1,0,0,0,0,0,1,0,3'b100,2'b00,2'b10,"JAL");
-        opcode=7'b1100111; check_control(1,0,0,1,0,0,1,1,3'b000,2'b00,2'b10,"JALR");
-        opcode=7'b1111111; check_control(0,0,0,0,0,0,0,0,3'b000,2'b00,2'b00,"unknown opcode");
+        check(32'h002081B3, 0, 0, {1'b0,3'b000,1'b1,1'b0,1'b0,1'b0,4'b0000,1'b0,2'b01}, "R-type ADD");
+        check(32'h00002283, 0, 0, {1'b0,3'b000,1'b1,1'b0,1'b0,1'b1,4'b0000,1'b0,2'b00}, "LW");
+        check(32'h00302023, 0, 0, {1'b0,3'b001,1'b0,1'b0,1'b0,1'b1,4'b0000,1'b1,2'b00}, "SW");
+        check(32'h00208463, 1, 0, {1'b1,3'b010,1'b0,1'b0,1'b1,1'b1,4'b0000,1'b0,2'b00}, "BEQ taken");
+        check(32'h00209463, 1, 0, {1'b0,3'b010,1'b0,1'b0,1'b1,1'b1,4'b0000,1'b0,2'b00}, "BNE not taken");
+        check(32'h0080036F, 0, 0, {1'b1,3'b100,1'b1,1'b0,1'b1,1'b1,4'b0000,1'b0,2'b10}, "JAL");
+        check(32'h12345037, 0, 0, {1'b0,3'b011,1'b1,1'b0,1'b0,1'b1,4'b1010,1'b0,2'b01}, "LUI");
+        check(32'hFFFFFFFF, 0, 0, {1'b0,3'b000,1'b0,1'b0,1'b0,1'b0,4'b0000,1'b0,2'b00}, "unknown opcode");
         $display("tb_control_unit: all tests passed");
         $finish;
     end

@@ -27,13 +27,15 @@ module data_mem #(
                         mem[address] <= write_data[7:0];
                 end
                 3'b001: begin // SH
-                    if ((address + 32'd1) < DEPTH_BYTES) begin
+                    if ((DEPTH_BYTES >= 2) && (address < DEPTH_BYTES) &&
+                        (address <= (DEPTH_BYTES - 2))) begin
                         mem[address]        <= write_data[7:0];
                         mem[address + 32'd1] <= write_data[15:8];
                     end
                 end
                 3'b010: begin // SW
-                    if ((address + 32'd3) < DEPTH_BYTES) begin
+                    if ((DEPTH_BYTES >= 4) && (address < DEPTH_BYTES) &&
+                        (address <= (DEPTH_BYTES - 4))) begin
                         mem[address]        <= write_data[7:0];
                         mem[address + 32'd1] <= write_data[15:8];
                         mem[address + 32'd2] <= write_data[23:16];
@@ -55,11 +57,13 @@ module data_mem #(
                         read_data = {{24{mem[address][7]}}, mem[address]};
                 end
                 3'b001: begin // LH (signed half-word)
-                    if ((address + 32'd1) < DEPTH_BYTES)
+                    if ((DEPTH_BYTES >= 2) && (address < DEPTH_BYTES) &&
+                        (address <= (DEPTH_BYTES - 2)))
                         read_data = {{16{mem[address + 32'd1][7]}}, mem[address + 32'd1], mem[address]};
                 end
                 3'b010: begin // LW (word)
-                    if ((address + 32'd3) < DEPTH_BYTES)
+                    if ((DEPTH_BYTES >= 4) && (address < DEPTH_BYTES) &&
+                        (address <= (DEPTH_BYTES - 4)))
                         read_data = {mem[address + 32'd3], mem[address + 32'd2], mem[address + 32'd1], mem[address]};
                 end
                 3'b100: begin // LBU (unsigned byte)
@@ -67,7 +71,8 @@ module data_mem #(
                         read_data = {24'd0, mem[address]};
                 end
                 3'b101: begin // LHU (unsigned half-word)
-                    if ((address + 32'd1) < DEPTH_BYTES)
+                    if ((DEPTH_BYTES >= 2) && (address < DEPTH_BYTES) &&
+                        (address <= (DEPTH_BYTES - 2)))
                         read_data = {16'd0, mem[address + 32'd1], mem[address]};
                 end
                 default: read_data = 32'd0;
