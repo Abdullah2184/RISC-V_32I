@@ -55,16 +55,46 @@ module tb_riscv_single_cycle;
             $display("cycle=%0d pc=%h instruction=%h",cycle,pc_out,instruction_out);
         end
 
-        if (dut.rf.regs[1]  !== 32'd5)  $fatal(1,"x1 expected 5, got %h",dut.rf.regs[1]);
-        if (dut.rf.regs[2]  !== 32'd7)  $fatal(1,"x2 expected 7, got %h",dut.rf.regs[2]);
-        if (dut.rf.regs[3]  !== 32'd12) $fatal(1,"x3 expected 12, got %h",dut.rf.regs[3]);
-        if (dut.rf.regs[4]  !== 32'd12) $fatal(1,"x4 expected 12, got %h",dut.rf.regs[4]);
-        if (dut.rf.regs[5]  !== 32'd42) $fatal(1,"x5 expected 42, got %h",dut.rf.regs[5]);
-        if (dut.rf.regs[6]  !== 32'd36) $fatal(1,"x6 expected 36, got %h",dut.rf.regs[6]);
-        if (dut.rf.regs[7]  !== 32'd11) $fatal(1,"x7 expected 11, got %h",dut.rf.regs[7]);
-        if (dut.rf.regs[8]  !== 32'd52) $fatal(1,"x8 expected 52, got %h",dut.rf.regs[8]);
-        if (dut.rf.regs[10] !== 32'd77) $fatal(1,"x10 expected 77, got %h",dut.rf.regs[10]);
-        if (dut.dmem.mem[0] !== 8'h0C) $fatal(1,"Memory byte 0 expected 0C, got %h",dut.dmem.mem[0]);
+        if (dut.rf.regs[1]  !== 32'd5) begin
+            $display("FAIL: x1 expected 5, got %h", dut.rf.regs[1]);
+            $finish;
+        end
+        if (dut.rf.regs[2]  !== 32'd7) begin
+            $display("FAIL: x2 expected 7, got %h", dut.rf.regs[2]);
+            $finish;
+        end
+        if (dut.rf.regs[3]  !== 32'd12) begin
+            $display("FAIL: x3 expected 12, got %h", dut.rf.regs[3]);
+            $finish;
+        end
+        if (dut.rf.regs[4]  !== 32'd12) begin
+            $display("FAIL: x4 expected 12, got %h", dut.rf.regs[4]);
+            $finish;
+        end
+        if (dut.rf.regs[5]  !== 32'd42) begin
+            $display("FAIL: x5 expected 42, got %h", dut.rf.regs[5]);
+            $finish;
+        end
+        if (dut.rf.regs[6]  !== 32'd36) begin
+            $display("FAIL: x6 expected 36, got %h", dut.rf.regs[6]);
+            $finish;
+        end
+        if (dut.rf.regs[7]  !== 32'd11) begin
+            $display("FAIL: x7 expected 11, got %h", dut.rf.regs[7]);
+            $finish;
+        end
+        if (dut.rf.regs[8]  !== 32'd52) begin
+            $display("FAIL: x8 expected 52, got %h", dut.rf.regs[8]);
+            $finish;
+        end
+        if (dut.rf.regs[10] !== 32'd77) begin
+            $display("FAIL: x10 expected 77, got %h", dut.rf.regs[10]);
+            $finish;
+        end
+        if (dut.dmem.mem[0] !== 8'h0C) begin
+            $display("FAIL: Memory byte 0 expected 0C, got %h", dut.dmem.mem[0]);
+            $finish;
+        end
 
         $display("tb_riscv_single_cycle: all integration checks passed");
         $finish;
